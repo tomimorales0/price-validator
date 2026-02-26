@@ -106,8 +106,9 @@ async function scrapearML(query, opciones = {}) {
           el.querySelector(".poly-component__title")?.textContent?.trim() ||
           el.querySelector(".ui-search-item__title")?.textContent?.trim();
 
-        const fractionEl = el.querySelector(".andes-money-amount__fraction");
-        const priceText = fractionEl?.textContent?.replace(/\./g, "").trim();
+        const priceEl = el.querySelector(".poly-price__current .andes-money-amount__fraction") ||
+                el.querySelector(".andes-money-amount:not(.andes-money-amount--previous) .andes-money-amount__fraction");
+        const priceText = priceEl?.textContent?.replace(/\./g, "").trim();
         const price = parseInt(priceText, 10);
 
         const permalink =
