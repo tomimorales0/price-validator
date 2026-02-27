@@ -451,3 +451,106 @@ h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
   padding: 60px 20px;
   color: var(--text-muted);
 }
+
+/* Wrapper para fila + detalle */
+.reporte-row-wrap {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.reporte-row-wrap:hover {
+  border-color: rgba(255, 225, 51, 0.3);
+}
+
+/* Quitale el border a .reporte-row ya que ahora lo tiene el wrapper */
+.reporte-row {
+  background: var(--surface);
+  border: none;
+  border-radius: 0;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  transition: background 0.2s;
+}
+
+.reporte-row:hover {
+  background: var(--surface-2);
+}
+
+.reporte-chevron {
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--accent);
+  font-size: 1rem;
+  transition: transform 0.2s;
+}
+
+/* Lista desplegable */
+.reporte-detalle {
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+  animation: fadeIn 0.2s ease;
+}
+
+.reporte-detalle__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.reporte-detalle__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+
+.reporte-detalle__item:last-child {
+  border-bottom: none;
+}
+
+.reporte-detalle__item:hover {
+  background: rgba(255, 225, 51, 0.05);
+}
+
+.reporte-detalle__idx {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  min-width: 20px;
+}
+
+.reporte-detalle__titulo {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.reporte-detalle__precio {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.reporte-detalle__link {
+  color: var(--accent);
+  font-size: 0.85rem;
+  opacity: 0.7;
+}

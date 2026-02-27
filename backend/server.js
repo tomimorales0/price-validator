@@ -32,10 +32,16 @@ function contienePalabraProhibida(titulo, palabrasProhibidas = []) {
   return palabrasProhibidas.some((p) => t.includes(normalizar(p)));
 }
 
-function contieneAlgunaPalabraObligatoria(titulo, palabrasObligatorias = []) {
+function contieneTodasLasPalabrasObligatorias(titulo, palabrasObligatorias = []) {
   if (!palabrasObligatorias.length) return true;
   const t = normalizar(titulo);
-  return palabrasObligatorias.some((p) => t.includes(normalizar(p)));
+  return palabrasObligatorias.every((p) => t.includes(normalizar(p)));
+}
+
+function contieneAlgunaPalabraSemiObligatoria(titulo, palabrasSemiObligatorias = []) {
+  if (!palabrasSemiObligatorias.length) return true;
+  const t = normalizar(titulo);
+  return palabrasSemiObligatorias.some((p) => t.includes(normalizar(p)));
 }
 
 function calcularEstadisticas(productos) {
@@ -67,6 +73,7 @@ async function scrapearML(query, opciones = {}) {
   const {
     palabrasProhibidas = [],
     palabrasObligatorias = [],
+    palabrasSemiObligatorias= [],
     precioMin = null,
     precioMax = null,
   } = opciones;
@@ -132,10 +139,16 @@ async function scrapearML(query, opciones = {}) {
         console.log(`  ❌ Prohibida:          "${p.title}" ($${p.price.toLocaleString("es-AR")})`);
         return false;
       }
-      if (!contieneAlgunaPalabraObligatoria(p.title, palabrasObligatorias)) {
+      if (!contieneTodasLasPalabrasObligatorias(p.title, palabrasObligatorias)) {
         console.log(`  ❌ Sin obligatoria:    "${p.title}" ($${p.price.toLocaleString("es-AR")})`);
         return false;
       }
+
+      if (!contieneAlgunaPalabraSemiObligatoria(p.title, palabrasSemiObligatorias)) {
+        console.log(`  ❌ Sin semi-obligatoria: "${p.title}" ($${p.price.toLocaleString("es-AR")})`);
+        return false;
+      }
+
       if (precioMin !== null && p.price < precioMin) {
         console.log(`  ❌ Precio muy bajo:    "${p.title}" ($${p.price.toLocaleString("es-AR")})`);
         return false;
