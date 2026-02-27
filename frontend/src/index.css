@@ -16,13 +16,13 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   min-height: 100vh;
   background-image:
     radial-gradient(ellipse 60% 40% at 50% -10%, rgba(255,225,51,0.08) 0%, transparent 70%);
 }
 
-h1, h2, h3 { font-family: 'Syne', sans-serif; }
+h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
 
 .container {
   max-width: 960px;
@@ -79,7 +79,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--text);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   padding: 14px 20px;
   outline: none;
@@ -99,7 +99,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; }
   border-radius: var(--radius);
   color: #0a0a0f;
   cursor: pointer;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -176,7 +176,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; }
 }
 
 .price-display .amount {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(2.4rem, 5vw, 3.8rem);
   font-weight: 800;
   color: var(--accent);
@@ -190,7 +190,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; }
 
 .price-display .meta .count {
   font-size: 2rem;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   color: var(--green);
 }
@@ -263,7 +263,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; }
 }
 
 .card-price {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text);
@@ -313,7 +313,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; }
   border-bottom: 2px solid transparent;
   color: var(--text-muted);
   cursor: pointer;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   padding: 10px 20px;
@@ -365,7 +365,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; }
 }
 
 .resumen-num {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.8rem;
   font-weight: 800;
   color: var(--accent);
@@ -401,7 +401,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; }
 .reporte-row--error { opacity: 0.5; }
 
 .reporte-row__nombre {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 1rem;
 }
@@ -432,7 +432,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; }
 }
 
 .reporte-precio__value {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   color: var(--text);
