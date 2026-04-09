@@ -169,7 +169,8 @@ app.get("/api/precio-promedio", async (req, res) => {
 });
 
 app.get("/api/generar-reporte", async (req, res) => {
-  const reporte = [];
+  const reporteFinal = [];
+  
   for (const item of CATALOGO) {
     try {
       const productos = await scrapearML(item.queryBusqueda, {
@@ -181,17 +182,38 @@ app.get("/api/generar-reporte", async (req, res) => {
 
       if (productos.length > 0) {
         const stats = calcularEstadisticas(productos);
-        reporte.push({ id: item.id, nombreOriginal: item.nombreOriginal, ...stats });
+        // Agregamos la query para que el front sepa qué buscó
+        reporteFinal.push({ 
+          id: item.id, 
+          nombreOriginal: item.nombreOriginal, 
+          queryBusqueda: item.queryBusqueda, // 👈 Importante para el diseño
+          ...stats 
+        });
+      } else {
+        // Si no hay productos, lo contamos como error/sin datos
+        reporteFinal.push({ id: item.id, nombreOriginal: item.nombreOriginal, queryBusqueda: item.queryBusqueda, error: "Sin resultados" });
       }
 
       if (CATALOGO.indexOf(item) < CATALOGO.length - 1) {
         await new Promise((r) => setTimeout(r, 4000));
       }
     } catch (e) {
-      reporte.push({ id: item.id, error: e.message });
+      reporteFinal.push({ id: item.id, nombreOriginal: item.nombreOriginal, queryBusqueda: item.queryBusqueda, error: e.message });
     }
   }
-  return res.json({ generado_en: new Date().toISOString(), reporte });
+
+
+  const total_productos = CATALOGO.length;
+  const exitosos = reporteFinal.filter(item => !item.error).length;
+  const con_errores = reporteFinal.filter(item => item.error).length;
+
+  return res.json({ 
+    generado_en: new Date().toISOString(), 
+    reporte: reporteFinal, // La lista completa
+    total_productos,        // El número total
+    exitosos,               // Los que anduvieron bien
+    con_errores            // Los que fallaron
+  });
 });
 
 app.listen(PORT, () => {
